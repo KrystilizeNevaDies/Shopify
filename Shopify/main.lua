@@ -32,7 +32,9 @@ end
 
 function BalHandler(_, Player)
 	local PlayersUUID = cMojangAPI:GetUUIDFromPlayerName(Player:GetName(), false)
-	Player:SendMessage(BankChangePlayerBalance(PlayersUUID, 500))
+	local PlayersBalance = BankGetPlayerBalance(PlayersUUID)
+	Player:SendMessageInfo("Balance: " .. PlayersBalance)
+	return true
 end
 
 function ShopHandler(Split, Player)
